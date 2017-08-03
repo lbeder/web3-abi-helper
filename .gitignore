@@ -1,0 +1,7 @@
+.DS_Store
+*/**/.DS_Store
+npm-debug.log
+.npm/
+/coverage
+/tmp
+node_modules

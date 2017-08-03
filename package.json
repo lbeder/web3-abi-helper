@@ -1,0 +1,11 @@
+{
+  "name": "web3-api-helper",
+  "version": "1.0.0",
+  "description": "Ethereum JavaScript API Helper",
+  "author": "leonid.beder@gmail.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lbeder/web3-api-helper.git"
+  }
+}
