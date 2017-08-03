@@ -1,0 +1,18 @@
+"0x79ba5097":
+  name: acceptOwnership()
+  type: function
+  inputs: []
+
+"0xa9059cbb":
+  name: transfer(address,uint256)
+  type: function,
+  inputs:
+    - type: address
+      name: to
+    - type: uint256
+      name: value
+
+"0xebbc4965":
+  name: acceptOwner()
+  type: function
+  inputs: []
