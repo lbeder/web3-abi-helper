@@ -1,3 +1,26 @@
+"0x23b872dd":
+  name: transferFrom(address,address,uint256)
+  type: function
+  inputs:
+    - type: address
+      name: from
+    - type: address
+      name: to
+    - type: uint256
+      name: value
+
+"0x54fd4d50":
+  name: version()
+  type: function
+  inputs: []
+
+"0x70a08231":
+  name: balanceOf(address)
+  type: function
+  inputs:
+    - type: address
+      name: owner
+
 "0x79ba5097":
   name: acceptOwnership()
   type: function
@@ -5,12 +28,21 @@
 
 "0xa9059cbb":
   name: transfer(address,uint256)
-  type: function,
+  type: function
   inputs:
     - type: address
       name: to
     - type: uint256
       name: value
+
+"0xdd62ed3e":
+  name: allowance(address,address)
+  type: function
+  inputs:
+    - type: address
+      name: owner
+    - type: address
+      name: spender
 
 "0xebbc4965":
   name: acceptOwner()
