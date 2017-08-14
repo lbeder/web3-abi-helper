@@ -1,3 +1,23 @@
+"0x06fdde03":
+  name: name()
+  type: function
+  inputs: []
+
+"0x095ea7b3":
+  name: approve(address,uint256)
+  type: function
+  inputs:
+    - type: address
+      name: spender
+    - type: uint256
+      name: value
+
+"0x18160ddd":
+  name: totalSupply()
+  type: function
+  inputs: []
+
+
 "0x23b872dd":
   name: transferFrom(address,address,uint256)
   type: function
@@ -8,6 +28,11 @@
       name: to
     - type: uint256
       name: value
+
+"0x313ce567":
+  name: decimals()
+  type: function
+  inputs: []
 
 "0x54fd4d50":
   name: version()
@@ -23,6 +48,16 @@
 
 "0x79ba5097":
   name: acceptOwnership()
+  type: function
+  inputs: []
+
+"0x8da5cb5b":
+  name: owner()
+  type: function
+  inputs: []
+
+"0x95d89b41":
+  name: symbol()
   type: function
   inputs: []
 
