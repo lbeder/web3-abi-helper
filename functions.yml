@@ -78,8 +78,3 @@
       name: owner
     - type: address
       name: spender
-
-"0xebbc4965":
-  name: acceptOwner()
-  type: function
-  inputs: []
