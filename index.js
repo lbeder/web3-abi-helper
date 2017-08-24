@@ -21,8 +21,6 @@ class Web3Helper {
         if (typeof method === 'string' || method instanceof String) {
             let methodName = method;
 
-            console.log(`Trying to fetch method '${methodName}' from known methods list...`);
-
             let sha3 = web3.utils.sha3(methodName).substring(0, FUNCTION_NAME_LENGTH);
             method = FUNCTIONS[sha3];
             if (!method) {
@@ -30,21 +28,10 @@ class Web3Helper {
             }
         }
 
-        console.log(
-            `Encoding: \n` +
-            `  Function: ${method.name} \n` +
-            `  Parameters: \n${this.paramsToString(method, params) || '    N/A'}`
-        );
-
         return web3.eth.abi.encodeFunctionCall(method, params);
     }
 
     decodeMethod(data) {
-        console.log(
-            `Decoding: \n` +
-            `${data}\n`
-        );
-
         let signature = data.substring(0, FUNCTION_NAME_LENGTH);
         let encodedParams = data.substring(FUNCTION_NAME_LENGTH);
 
