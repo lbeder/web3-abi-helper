@@ -17,6 +17,19 @@ class Web3Helper {
     }
 
     encodeMethod(method, params) {
+        // If method is a string - try to fetch its input from the list of known methods.
+        if (typeof method === 'string' || method instanceof String) {
+            let methodName = method;
+
+            console.log(`Trying to fetch method '${methodName}' from known methods list...`);
+
+            let sha3 = web3.utils.sha3(methodName).substring(0, FUNCTION_NAME_LENGTH);
+            method = FUNCTIONS[sha3];
+            if (!method) {
+                throw new Error(`Could not find known method '${methodName}' from known methods list!`);
+            }
+        }
+
         console.log(
             `Encoding: \n` +
             `  Function: ${method.name} \n` +
