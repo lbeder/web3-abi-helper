@@ -77,3 +77,10 @@
       name: owner
     - type: address
       name: spender
+
+"0xf2fde38b":
+  name: transferOwnership(address)
+  type: function
+  inputs:
+    - type: address
+      name: newOwnerCandidate
