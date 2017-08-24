@@ -20,5 +20,12 @@
     "web3": "^1.0.0-beta.15",
     "yamljs": "^0.3.0",
     "yargs": "^8.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
   }
 }
