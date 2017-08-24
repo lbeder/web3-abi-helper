@@ -17,7 +17,6 @@
   type: function
   inputs: []
 
-
 "0x23b872dd":
   name: transferFrom(address,address,uint256)
   type: function
