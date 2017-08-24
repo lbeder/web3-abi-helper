@@ -31,8 +31,8 @@ let decoded = web3Helper.decodeMethod(encoded);
 
 console.log(
     `Decoded: \n` +
-    `  Function: ${decoded.abi.name} \n` +
-    `  Parameters: \n${web3Helper.paramsToString(decoded.abi, decoded.params)}`
+    `  Function: ${decoded.method.name} \n` +
+    `  Parameters: \n${web3Helper.paramsToString(decoded.method, decoded.params)}`
 );
 
 let params2 = ['0xff98336a9027A09355e7b4326CA79eFfE3660415', '0xb3F636caE9E8AD9795d14D3BDDa3E382dba47C73', 1000];
@@ -51,6 +51,6 @@ let decoded2 = web3Helper.decodeMethod(encodedByName);
 
 console.log(
     `Decoded: \n` +
-    `  Function: ${decoded2.abi.name} \n` +
-    `  Parameters: \n${web3Helper.paramsToString(decoded2.abi, decoded2.params) || '    N/A'}`
+    `  Function: ${decoded2.method.name} \n` +
+    `  Parameters: \n${web3Helper.paramsToString(decoded2.method, decoded2.params) || '    N/A'}`
 );

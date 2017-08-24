@@ -41,7 +41,7 @@ class Web3Helper {
         }
 
         return {
-            abi: abi,
+            method: abi,
             params: web3.eth.abi.decodeParameters(abi.inputs, encodedParams)
         };
     }
