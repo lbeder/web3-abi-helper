@@ -26,6 +26,8 @@ class Web3Helper {
             if (!method) {
                 throw new Error(`Could not find known method '${methodName}' from known methods list!`);
             }
+
+            method.type = 'function';
         }
 
         return web3.eth.abi.encodeFunctionCall(method, params);
@@ -39,6 +41,8 @@ class Web3Helper {
         if (!abi) {
             throw new Error(`Could not find function for signature: ${signature})!`);
         }
+
+        abi.type = 'function';
 
         return {
             method: abi,

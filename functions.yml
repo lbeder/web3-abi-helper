@@ -1,86 +1,50 @@
-"0x06fdde03":
+'0x06fdde03':
+  inputs: []
   name: name()
-  type: function
-  inputs: []
-
-"0x095ea7b3":
+'0x095ea7b3':
+  inputs:
+  - {name: spender, type: address}
+  - {name: value, type: uint256}
   name: approve(address,uint256)
-  type: function
-  inputs:
-    - type: address
-      name: spender
-    - type: uint256
-      name: value
-
-"0x18160ddd":
+'0x18160ddd':
+  inputs: []
   name: totalSupply()
-  type: function
-  inputs: []
-
-"0x23b872dd":
+'0x23b872dd':
+  inputs:
+  - {name: from, type: address}
+  - {name: to, type: address}
+  - {name: value, type: uint256}
   name: transferFrom(address,address,uint256)
-  type: function
-  inputs:
-    - type: address
-      name: from
-    - type: address
-      name: to
-    - type: uint256
-      name: value
-
-"0x313ce567":
+'0x313ce567':
+  inputs: []
   name: decimals()
-  type: function
+'0x54fd4d50':
   inputs: []
-
-"0x54fd4d50":
   name: version()
-  type: function
-  inputs: []
-
-"0x70a08231":
+'0x70a08231':
+  inputs:
+  - {name: owner, type: address}
   name: balanceOf(address)
-  type: function
-  inputs:
-    - type: address
-      name: owner
-
-"0x79ba5097":
+'0x79ba5097':
+  inputs: []
   name: acceptOwnership()
-  type: function
+'0x8da5cb5b':
   inputs: []
-
-"0x8da5cb5b":
   name: owner()
-  type: function
+'0x95d89b41':
   inputs: []
-
-"0x95d89b41":
   name: symbol()
-  type: function
-  inputs: []
-
-"0xa9059cbb":
+'0xa9059cbb':
+  inputs:
+  - {name: to, type: address}
+  - {name: value, type: uint256}
   name: transfer(address,uint256)
-  type: function
+'0xdd62ed3e':
   inputs:
-    - type: address
-      name: to
-    - type: uint256
-      name: value
-
-"0xdd62ed3e":
+  - {name: owner, type: address}
+  - {name: spender, type: address}
   name: allowance(address,address)
-  type: function
+'0xf2fde38b':
   inputs:
-    - type: address
-      name: owner
-    - type: address
-      name: spender
-
-"0xf2fde38b":
+  - {name: newOwnerCandidate, type: address}
   name: transferOwnership(address)
-  type: function
-  inputs:
-    - type: address
-      name: newOwnerCandidate
