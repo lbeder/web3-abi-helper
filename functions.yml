@@ -63,7 +63,7 @@
       type: address
     - name: value
       type: uint256
-  name: 'addTokenGrant(address[])'
+  name: 'addTokenGrant(address,uint256)'
 '0xdd62ed3e':
   inputs:
     - name: owner
