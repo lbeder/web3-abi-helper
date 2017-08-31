@@ -3,9 +3,11 @@ require('babel-polyfill');
 
 const YAML = require('yamljs');
 const Web3 = require('web3');
+const path = require('path');
+
 const web3 = new Web3();
 
-const FUNCTIONS = YAML.load('./functions.yml');
+const FUNCTIONS = YAML.load(path.join(__dirname, 'functions.yml'));
 const FUNCTION_NAME_LENGTH = 10;
 
 class Web3Helper {
