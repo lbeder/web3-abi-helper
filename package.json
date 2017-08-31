@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "chai": "^4.1.1",
-    "mocha": "^3.5.0"
+    "mocha": "^3.5.0",
+    "yml-sorter": "0.0.3"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha"
