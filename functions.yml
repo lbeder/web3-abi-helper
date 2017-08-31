@@ -3,27 +3,38 @@
   name: name()
 '0x095ea7b3':
   inputs:
-  - {name: spender, type: address}
-  - {name: value, type: uint256}
-  name: approve(address,uint256)
+    - name: spender
+      type: address
+    - name: value
+      type: uint256
+  name: 'approve(address,uint256)'
 '0x18160ddd':
   inputs: []
   name: totalSupply()
 '0x23b872dd':
   inputs:
-  - {name: from, type: address}
-  - {name: to, type: address}
-  - {name: value, type: uint256}
-  name: transferFrom(address,address,uint256)
+    - name: from
+      type: address
+    - name: to
+      type: address
+    - name: value
+      type: uint256
+  name: 'transferFrom(address,address,uint256)'
 '0x313ce567':
   inputs: []
   name: decimals()
+'0x35400daf':
+  inputs:
+    - name: participants
+      type: 'address[]'
+  name: 'setTier2Participants(address[])'
 '0x54fd4d50':
   inputs: []
   name: version()
 '0x70a08231':
   inputs:
-  - {name: owner, type: address}
+    - name: owner
+      type: address
   name: balanceOf(address)
 '0x79ba5097':
   inputs: []
@@ -34,17 +45,34 @@
 '0x95d89b41':
   inputs: []
   name: symbol()
+'0xa3ea478f':
+  inputs:
+    - name: participants
+      type: 'address[]'
+  name: 'setTier1Participants(address[])'
 '0xa9059cbb':
   inputs:
-  - {name: to, type: address}
-  - {name: value, type: uint256}
-  name: transfer(address,uint256)
+    - name: to
+      type: address
+    - name: value
+      type: uint256
+  name: 'transfer(address,uint256)'
+'0xb8ad2abe':
+  inputs:
+    - name: grantee
+      type: address
+    - name: value
+      type: uint256
+  name: 'addTokenGrant(address[])'
 '0xdd62ed3e':
   inputs:
-  - {name: owner, type: address}
-  - {name: spender, type: address}
-  name: allowance(address,address)
+    - name: owner
+      type: address
+    - name: spender
+      type: address
+  name: 'allowance(address,address)'
 '0xf2fde38b':
   inputs:
-  - {name: newOwnerCandidate, type: address}
+    - name: newOwnerCandidate
+      type: address
   name: transferOwnership(address)
