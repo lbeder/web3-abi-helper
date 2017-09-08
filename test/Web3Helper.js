@@ -160,4 +160,23 @@ describe('Web3Helper', function() {
             });
         });
     });
+
+    describe('isAddress', () => {
+        [
+            { address: 0, result: false },
+            { address: '0x', result: false },
+            { address: '0xff98336a9027B09355e7b4326CA79eFfE3660415', result: false },
+            { address: '0x02C2653E06fC2c848555a5418A554bE9fC63a250', result: true },
+            { address: '0xEe08D2cC697e9dc4D65fE4d9a6CbBD936776805F', result: false },
+            { address: '0xff98336a9027A09355e7b4326CA79eFfE3660415', result: true },
+            { address: '0xebfbfbdb8cbef890e8ca0143b5d9ab3fe15056c8', result: true },
+            { address: '0xf3bf7e748e954441bbbd4446062554f881bf89d5', result: true },
+            { address: '0xfCB65431F172Bb1E761976cF1617D706b2EE2550', result: true },
+            { address: '0x564FbA0d2fd90e3c98B9372e269bFf2409ebD359', result: false }
+        ].forEach((spec) => {
+            it(`should return ${spec.result} for ${spec.address}`, () => {
+                expect(web3Helper.isAddress(spec.address)).to.eql(spec.result);
+            });
+        });
+    });
 });

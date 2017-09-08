@@ -51,6 +51,10 @@ class Web3Helper {
             params: web3.eth.abi.decodeParameters(abi.inputs, encodedParams)
         };
     }
+
+    isAddress(address) {
+        return web3.utils.isAddress(address);
+    }
 }
 
 module.exports = Web3Helper;
