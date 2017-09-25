@@ -82,6 +82,11 @@
 '0x95d89b41':
   inputs: []
   name: symbol()
+'0x9ed93318':
+  inputs:
+    - name: recipient
+      type: address
+  name: create(address)
 '0xa3ea478f':
   inputs:
     - name: participants
