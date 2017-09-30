@@ -34,6 +34,10 @@
   - {name: end, type: uint256}
   - {name: revokable, type: bool}
   name: grant(address,uint256,uint256,uint256,uint256,bool)
+'0x7065cb48':
+  inputs:
+  - {name: owner, type: address}
+  name: addOwner(address)
 '0x70a08231':
   inputs:
   - {name: owner, type: address}
@@ -79,12 +83,25 @@
   - {name: grantee, type: address}
   - {name: value, type: uint256}
   name: addTokenGrant(address,uint256)
+'0xba51a6df':
+  inputs:
+  - {name: required, type: uin256}
+  name: changeRequirement(uin256)
 '0xdd62ed3e':
   inputs:
   - {name: owner, type: address}
   - {name: spender, type: address}
   name: allowance(address,address)
+'0xe20056e6':
+  inputs:
+  - {name: owner, type: address}
+  - {name: newOwner, type: address}
+  name: replaceOwner(address,address)
 '0xf2fde38b':
   inputs:
   - {name: newOwnerCandidate, type: address}
   name: transferOwnership(address)
+'0xff98336a':
+  inputs:
+  - {name: owner, type: address}
+  name: removeOwner(address)
