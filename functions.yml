@@ -1,17 +1,17 @@
-'0x06fdde03':
+0x06fdde03:
   inputs: []
   name: name()
-'0x095ea7b3':
+0x095ea7b3:
   inputs:
     - name: spender
       type: address
     - name: value
       type: uint256
-  name: 'approve(address,uint256)'
-'0x18160ddd':
+  name: approve(address,uint256)
+0x18160ddd:
   inputs: []
   name: totalSupply()
-'0x23b872dd':
+0x23b872dd:
   inputs:
     - name: from
       type: address
@@ -19,19 +19,19 @@
       type: address
     - name: value
       type: uint256
-  name: 'transferFrom(address,address,uint256)'
-'0x313ce567':
+  name: transferFrom(address,address,uint256)
+0x313ce567:
   inputs: []
   name: decimals()
-'0x35400daf':
+0x35400daf:
   inputs:
     - name: participants
-      type: 'address[]'
-  name: 'setTier2Participants(address[])'
-'0x54fd4d50':
+      type: address[]
+  name: setTier2Participants(address[])
+0x54fd4d50:
   inputs: []
   name: version()
-'0x5ee7e96d':
+0x5ee7e96d:
   inputs:
     - name: to
       type: address
@@ -45,24 +45,24 @@
       type: uint256
     - name: revokable
       type: bool
-  name: 'grant(address,uint256,uint256,uint256,uint256,bool)'
-'0x70a08231':
+  name: grant(address,uint256,uint256,uint256,uint256,bool)
+0x70a08231:
   inputs:
     - name: owner
       type: address
   name: balanceOf(address)
-'0x74a8f103':
+0x74a8f103:
   inputs:
     - name: holder
       type: address
   name: revoke(address)
-'0x79ba5097':
+0x79ba5097:
   inputs: []
   name: acceptOwnership()
-'0x8da5cb5b':
+0x8da5cb5b:
   inputs: []
   name: owner()
-'0x95792430':
+0x95792430:
   inputs:
     - name: to
       type: address
@@ -78,42 +78,42 @@
       type: uint256
     - name: revokable
       type: bool
-  name: 'grant(address,uint256,uint256,uint256,uint256,uint256,bool)'
-'0x95d89b41':
+  name: grant(address,uint256,uint256,uint256,uint256,uint256,bool)
+0x95d89b41:
   inputs: []
   name: symbol()
-'0x9ed93318':
+0x9ed93318:
   inputs:
     - name: recipient
       type: address
   name: create(address)
-'0xa3ea478f':
+0xa3ea478f:
   inputs:
     - name: participants
-      type: 'address[]'
-  name: 'setTier1Participants(address[])'
-'0xa9059cbb':
+      type: address[]
+  name: setTier1Participants(address[])
+0xa9059cbb:
   inputs:
     - name: to
       type: address
     - name: value
       type: uint256
-  name: 'transfer(address,uint256)'
-'0xb8ad2abe':
+  name: transfer(address,uint256)
+0xb8ad2abe:
   inputs:
     - name: grantee
       type: address
     - name: value
       type: uint256
-  name: 'addTokenGrant(address,uint256)'
-'0xdd62ed3e':
+  name: addTokenGrant(address,uint256)
+0xdd62ed3e:
   inputs:
     - name: owner
       type: address
     - name: spender
       type: address
-  name: 'allowance(address,address)'
-'0xf2fde38b':
+  name: allowance(address,address)
+0xf2fde38b:
   inputs:
     - name: newOwnerCandidate
       type: address

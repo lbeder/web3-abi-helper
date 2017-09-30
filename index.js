@@ -24,7 +24,7 @@ class Web3Helper {
             let methodName = method;
 
             let sha3 = web3.utils.sha3(methodName).substring(0, FUNCTION_NAME_LENGTH);
-            method = FUNCTIONS[sha3];
+            method = FUNCTIONS[parseInt(sha3, 16)];
             if (!method) {
                 throw new Error(`Could not find known method '${methodName}' from known methods list!`);
             }
@@ -39,9 +39,9 @@ class Web3Helper {
         let signature = data.substring(0, FUNCTION_NAME_LENGTH);
         let encodedParams = data.substring(FUNCTION_NAME_LENGTH);
 
-        let abi = FUNCTIONS[signature];
+        let abi = FUNCTIONS[parseInt(signature, 16)];
         if (!abi) {
-            throw new Error(`Could not find function for signature: ${signature})!`);
+            throw new Error(`Could not find function for signature: ${signature}!`);
         }
 
         abi.type = 'function';
