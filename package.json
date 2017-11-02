@@ -22,6 +22,7 @@
     "yargs": "^9.0.1"
   },
   "devDependencies": {
+    "bignumber.js": "^4.1.0",
     "chai": "^4.1.2",
     "mocha": "^3.5.3",
     "yml-sorter": "0.0.3"
