@@ -1,6 +1,4 @@
-const Web3Helper = require('../index');
-
-let web3Helper = new Web3Helper();
+const web3Helper = require('../scripts/bin/index').Web3Helper;
 
 let method = {
     name: 'transfer',
