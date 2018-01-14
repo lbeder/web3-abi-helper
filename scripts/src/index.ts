@@ -4,8 +4,8 @@ import Web3 = require('web3');
 
 import { ABIDefinition } from 'web3/types';
 
-// this hack is needed because the ctor is defined to receive a required param
-// a fix is in PR: https://github.com/ethereum/web3.js/pull/1292
+// This hack is needed because the ctor is defined to receive a required param a fix is in PR:
+// https://github.com/ethereum/web3.js/pull/1292.
 const web3 = new (Web3 as any as { new(): Web3 })();
 
 const FUNCTIONS = YAML.load(path.join(__dirname, '../../functions.yml')) as { [name: string]: ABIDefinition };
@@ -57,8 +57,8 @@ class Web3HelperImpl implements Web3Helper {
 
         return {
             method: abi,
-            // needed hack because the type def expects a string[]
-            // a fix is in PR: https://github.com/ethereum/web3.js/pull/1293
+            // Needed hack because the type def expects a string[] a fix is in PR:
+            // https://github.com/ethereum/web3.js/pull/1293
             params: web3.eth.abi.decodeParameters(abi.inputs as any, encodedParams)
         };
     }
