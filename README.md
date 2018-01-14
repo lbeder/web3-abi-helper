@@ -32,7 +32,7 @@ console.log(`Encoded function call is: ${encoded}\n`);
 
 The output should be:
 
-```
+```bash
 Encoding:
   Function: transfer
   Parameters:
@@ -63,7 +63,7 @@ console.log(
 
 The output should be:
 
-```
+```bash
 Decoding:
 0xa9059cbb000000000000000000000000ff98336a9027a09355e7b4326ca79effe366041500000000000000000000000000000000000000000000000006f05b59d3b20000
 
@@ -73,5 +73,3 @@ Decoded:
     to (address): 0xff98336a9027A09355e7b4326CA79eFfE3660415
     value (uint256): 500000000000000000
 ```
-
-
