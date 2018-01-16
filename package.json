@@ -1,6 +1,6 @@
 {
   "name": "web3-api-helper",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Ethereum JavaScript API Helper",
   "author": "leonid.beder@gmail.com",
   "license": "MIT",
@@ -8,7 +8,8 @@
     "type": "git",
     "url": "git+https://github.com/lbeder/web3-api-helper.git"
   },
-  "main": "index.js",
+  "main": "./scripts/bin/index.js",
+  "types": "./scripts/bin/index.d.ts",
   "dependencies": {
     "@types/node": "^9.3.0",
     "@types/yamljs": "^0.2.30",
