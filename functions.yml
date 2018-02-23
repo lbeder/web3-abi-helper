@@ -87,6 +87,11 @@
   inputs:
   - {name: required, type: uin256}
   name: changeRequirement(uin256)
+'0xdc39d06d':
+  inputs:
+  - {name: tokenAddress, type: address}
+  - {name: amount, type: uint256}
+  name: transferAnyERC20Token(address,uint256)
 '0xdd62ed3e':
   inputs:
   - {name: owner, type: address}
