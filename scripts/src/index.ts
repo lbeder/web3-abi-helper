@@ -65,9 +65,7 @@ class Web3HelperImpl implements Web3Helper {
 
         return {
             method: abi,
-            // Needed hack because the type def expects a string[] a fix is in PR:
-            // https://github.com/ethereum/web3.js/pull/1293
-            params: web3.eth.abi.decodeParameters(abi.inputs as any, encodedParams)
+            params: web3.eth.abi.decodeParameters(abi.inputs, encodedParams)
         };
     }
 
