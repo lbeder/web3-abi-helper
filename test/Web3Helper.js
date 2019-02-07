@@ -54,7 +54,7 @@ describe('Web3Helper', () => {
         expectedResult: '0xf2fde38b000000000000000000000000ff98336a9027a09355e7b4326ca79effe3660415',
       },
     ].forEach((spec) => {
-      it(`should encode method ${JSON.stringify(spec.method)} with ${spec.params.length ==- 0 ? 'empty' : spec.params} params`, () => {
+      it(`should encode method ${JSON.stringify(spec.method)} with ${spec.params.length === 0 ? 'empty' : spec.params} params`, () => {
         expect(web3Helper.encodeMethod(spec.method, spec.params)).to.eql(spec.expectedResult);
       });
     });
@@ -63,7 +63,7 @@ describe('Web3Helper', () => {
       {
         methodName: 'transfer(address,uint256)',
         params: ['0xff98336a9027A09355e7b4326CA79eFfE3660415', 500000000000000000],
-        expectedResult: '0xa9059cbb000000000000000000000000ff98336a9027a09355e7b4326ca79effe366041500000000000000000000000000000000000000000000000006f05b59d3b20000'
+        expectedResult: '0xa9059cbb000000000000000000000000ff98336a9027a09355e7b4326ca79effe366041500000000000000000000000000000000000000000000000006f05b59d3b20000',
       },
       {
         methodName: 'totalSupply()',
@@ -79,7 +79,7 @@ describe('Web3Helper', () => {
         methodName: 'transferOwnership(address)',
         params: ['0xff98336a9027A09355e7b4326CA79eFfE3660415'],
         expectedResult: '0xf2fde38b000000000000000000000000ff98336a9027a09355e7b4326ca79effe3660415',
-      }
+      },
     ].forEach((spec) => {
       it(`should encode method name ${spec.methodName} with ${spec.params.length === 0 ? 'empty' : spec.params} params`, () => {
         expect(web3Helper.encodeMethod(spec.methodName, spec.params)).to.eql(spec.expectedResult);
