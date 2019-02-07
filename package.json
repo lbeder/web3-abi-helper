@@ -10,6 +10,10 @@
   },
   "main": "./scripts/bin/index.js",
   "types": "./scripts/bin/index.d.ts",
+  "scripts": {
+    "build": "tsc --build scripts/tsconfig.json",
+    "test": "./node_modules/.bin/mocha"
+  },
   "dependencies": {
     "@types/node": "^10.12.21",
     "@types/yamljs": "^0.2.30",
@@ -29,8 +33,5 @@
     "eslint-plugin-react": "^7.12.4",
     "mocha": "^5.2.0",
     "yml-sorter": "1.1.1"
-  },
-  "scripts": {
-    "test": "./node_modules/.bin/mocha"
   }
 }
