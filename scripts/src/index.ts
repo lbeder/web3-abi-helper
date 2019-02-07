@@ -1,12 +1,20 @@
-import Web3 = require('web3');
-
-import { ABIDefinition } from 'web3/types';
 import * as YAML from "yamljs";
 import * as path from "path";
+const Web3 = require("web3");
 
-// This hack is needed because the ctor is defined to receive a required param a fix is in PR:
-// https://github.com/ethereum/web3.js/pull/1292.
-const web3 = new (Web3 as any as { new(): Web3 })();
+type ABIDataTypes = "uint256" | "boolean" | "string" | "bytes" | string;
+interface ABIDefinition {
+    constant?: boolean;
+    payable?: boolean;
+    stateMutability?: "pure" | "view" | "nonpayable" | "payable";
+    anonymous?: boolean;
+    inputs?: Array<{ name: string; type: ABIDataTypes; indexed?: boolean }>;
+    name?: string;
+    outputs?: Array<{ name: string; type: ABIDataTypes }>;
+    type: "function" | "constructor" | "event" | "fallback";
+}
+
+const web3 = new Web3("http://");
 
 const FUNCTIONS = YAML.load(path.join(__dirname, "../../functions.yml")) as { [name: string]: ABIDefinition };
 const FUNCTION_NAME_LENGTH = 10;
