@@ -1,5 +1,4 @@
-import * as YAML from "yamljs";
-import * as path from "path";
+import * as functions from "./functions.json";
 const Web3 = require("web3");
 
 type ABIDataTypes = "uint256" | "boolean" | "string" | "bytes" | string;
@@ -14,10 +13,8 @@ interface ABIDefinition {
     type: "function" | "constructor" | "event" | "fallback";
 }
 
-const web3 = new Web3("http://");
-
-const FUNCTIONS = YAML.load(path.join(__dirname, "../../functions.yml")) as { [name: string]: ABIDefinition };
 const FUNCTION_NAME_LENGTH = 10;
+const web3 = new Web3("http://");
 
 export interface Web3Helper {
     paramsToString(method: ABIDefinition, params: any[]): string;
@@ -40,8 +37,8 @@ class Web3HelperImpl implements Web3Helper {
         if (typeof method === "string") {
             let methodName = method;
 
-            let sha3 = web3.utils.sha3(methodName).substring(0, FUNCTION_NAME_LENGTH);
-            method = FUNCTIONS[sha3];
+            let signature = web3.utils.sha3(methodName).substring(0, FUNCTION_NAME_LENGTH);
+            method = (<any>functions)[signature] as ABIDefinition;
             if (!method) {
                 throw new Error(`Could not find known method '${methodName}' from known methods list!`);
             }
@@ -56,7 +53,7 @@ class Web3HelperImpl implements Web3Helper {
         const signature = data.substring(0, FUNCTION_NAME_LENGTH);
         const encodedParams = data.substring(FUNCTION_NAME_LENGTH);
 
-        let abi = FUNCTIONS[signature];
+        let abi = (<any>functions)[signature] as ABIDefinition;
         if (!abi) {
             throw new Error(`Could not find function for signature: ${signature}!`);
         }
