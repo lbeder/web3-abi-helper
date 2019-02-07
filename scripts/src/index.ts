@@ -49,7 +49,7 @@ class Web3HelperImpl implements Web3Helper {
             method.type = "function";
         }
 
-        return web3.eth.abi.encodeFunctionCall(method, params);
+        return web3.eth.abi.encodeFunctionCall(method, this._encodeNumbericParameters(params));
     }
 
     decodeMethod(data: string): { method: ABIDefinition; params: { [key: string]: any }; } {
@@ -74,7 +74,12 @@ class Web3HelperImpl implements Web3Helper {
     }
 
     encodeParameters(inputAbi: string[], params: any[]): string {
-        return web3.eth.abi.encodeParameters(inputAbi, params).replace("0x", "");
+        return web3.eth.abi.encodeParameters(inputAbi, this._encodeNumbericParameters(params)).replace("0x", "");
+    }
+
+    // Convert numeric parameters to hex strings, due to https://github.com/ethereum/web3.js/issues/2077:
+    _encodeNumbericParameters(params: any[]): any[] {
+        return params.map((p: any) => Number.isFinite(p) ? web3.utils.numberToHex(p) : p);
     }
 }
 
