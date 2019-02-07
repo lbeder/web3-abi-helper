@@ -1,0 +1,6 @@
+sudo: false
+cache:
+  yarn: true
+script:
+  - yarn build
+  - yarn test

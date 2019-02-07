@@ -1,8 +1,11 @@
 # Web3 API Helper
 
+[![Build Status](https://travis-ci.org/lbeder/web3-api-helper.svg)](https://travis-ci.org/lbeder/web3-api-helper)
+
 This module contains a couple of helper methods which extend the standard web3.js API (1.0.0 and above).
 
-### Install
+## Install
+
 ```bash
 npm install web3-api-helper
 ```
