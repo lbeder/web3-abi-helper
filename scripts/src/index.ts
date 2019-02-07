@@ -14,7 +14,7 @@ const FUNCTION_NAME_LENGTH = 10;
 export interface Web3Helper {
     paramsToString(method: ABIDefinition, params: any[]): string;
     encodeMethod(method: ABIDefinition | string, params: any[]): string;
-    decodeMethod(data: string): { method: ABIDefinition; params: any[] };
+    decodeMethod(data: string): { method: ABIDefinition; params: { [key: string]: any } };
     isAddress(address: any): boolean;
     encodeParameters(inputAbi: string[], params: any[]): string;
 }
@@ -44,7 +44,7 @@ class Web3HelperImpl implements Web3Helper {
         return web3.eth.abi.encodeFunctionCall(method, params);
     }
 
-    decodeMethod(data: string): { method: ABIDefinition; params: any[] } {
+    decodeMethod(data: string): { method: ABIDefinition; params: { [key: string]: any }; } {
         const signature = data.substring(0, FUNCTION_NAME_LENGTH);
         const encodedParams = data.substring(FUNCTION_NAME_LENGTH);
 
