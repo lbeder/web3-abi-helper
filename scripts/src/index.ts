@@ -1,20 +1,28 @@
-import * as YAML from 'yamljs';
-import * as path from 'path';
-import Web3 = require('web3');
+import * as YAML from "yamljs";
+import * as path from "path";
+const Web3 = require("web3");
 
-import { ABIDefinition } from 'web3/types';
+type ABIDataTypes = "uint256" | "boolean" | "string" | "bytes" | string;
+interface ABIDefinition {
+    constant?: boolean;
+    payable?: boolean;
+    stateMutability?: "pure" | "view" | "nonpayable" | "payable";
+    anonymous?: boolean;
+    inputs?: Array<{ name: string; type: ABIDataTypes; indexed?: boolean }>;
+    name?: string;
+    outputs?: Array<{ name: string; type: ABIDataTypes }>;
+    type: "function" | "constructor" | "event" | "fallback";
+}
 
-// This hack is needed because the ctor is defined to receive a required param a fix is in PR:
-// https://github.com/ethereum/web3.js/pull/1292.
-const web3 = new (Web3 as any as { new(): Web3 })();
+const web3 = new Web3("http://");
 
-const FUNCTIONS = YAML.load(path.join(__dirname, '../../functions.yml')) as { [name: string]: ABIDefinition };
+const FUNCTIONS = YAML.load(path.join(__dirname, "../../functions.yml")) as { [name: string]: ABIDefinition };
 const FUNCTION_NAME_LENGTH = 10;
 
 export interface Web3Helper {
     paramsToString(method: ABIDefinition, params: any[]): string;
     encodeMethod(method: ABIDefinition | string, params: any[]): string;
-    decodeMethod(data: string): { method: ABIDefinition; params: any[] };
+    decodeMethod(data: string): { method: ABIDefinition; params: { [key: string]: any } };
     isAddress(address: any): boolean;
     encodeParameters(inputAbi: string[], params: any[]): string;
 }
@@ -29,7 +37,7 @@ class Web3HelperImpl implements Web3Helper {
 
     encodeMethod(method: ABIDefinition | string, params: any[]): string {
         // If method is a string - try to fetch its input from the list of known methods.
-        if (typeof method === 'string') {
+        if (typeof method === "string") {
             let methodName = method;
 
             let sha3 = web3.utils.sha3(methodName).substring(0, FUNCTION_NAME_LENGTH);
@@ -38,13 +46,13 @@ class Web3HelperImpl implements Web3Helper {
                 throw new Error(`Could not find known method '${methodName}' from known methods list!`);
             }
 
-            method.type = 'function';
+            method.type = "function";
         }
 
-        return web3.eth.abi.encodeFunctionCall(method, params);
+        return web3.eth.abi.encodeFunctionCall(method, this._encodeNumbericParameters(params));
     }
 
-    decodeMethod(data: string): { method: ABIDefinition; params: any[] } {
+    decodeMethod(data: string): { method: ABIDefinition; params: { [key: string]: any }; } {
         const signature = data.substring(0, FUNCTION_NAME_LENGTH);
         const encodedParams = data.substring(FUNCTION_NAME_LENGTH);
 
@@ -53,13 +61,11 @@ class Web3HelperImpl implements Web3Helper {
             throw new Error(`Could not find function for signature: ${signature}!`);
         }
 
-        abi.type = 'function';
+        abi.type = "function";
 
         return {
             method: abi,
-            // Needed hack because the type def expects a string[] a fix is in PR:
-            // https://github.com/ethereum/web3.js/pull/1293
-            params: web3.eth.abi.decodeParameters(abi.inputs as any, encodedParams)
+            params: web3.eth.abi.decodeParameters(abi.inputs, encodedParams)
         };
     }
 
@@ -68,7 +74,12 @@ class Web3HelperImpl implements Web3Helper {
     }
 
     encodeParameters(inputAbi: string[], params: any[]): string {
-        return web3.eth.abi.encodeParameters(inputAbi, params).replace('0x','');
+        return web3.eth.abi.encodeParameters(inputAbi, this._encodeNumbericParameters(params)).replace("0x", "");
+    }
+
+    // Convert numeric parameters to hex strings, due to https://github.com/ethereum/web3.js/issues/2077:
+    _encodeNumbericParameters(params: any[]): any[] {
+        return params.map((p: any) => Number.isFinite(p) ? web3.utils.numberToHex(p) : p);
     }
 }
 
