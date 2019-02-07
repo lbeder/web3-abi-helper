@@ -1,6 +1,6 @@
 {
   "name": "web3-api-helper",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Ethereum JavaScript API Helper",
   "author": "leonid.beder@gmail.com",
   "license": "MIT",
@@ -20,7 +20,6 @@
     "lerna": "^3.10.8",
     "typescript": "^3.3.1",
     "web3": "^1.0.0-beta.43",
-    "yamljs": "^0.3.0",
     "yargs": "^12.0.5"
   },
   "devDependencies": {
@@ -31,7 +30,6 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
-    "mocha": "^5.2.0",
-    "yml-sorter": "1.1.1"
+    "mocha": "^5.2.0"
   }
 }

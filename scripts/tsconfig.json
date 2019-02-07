@@ -4,13 +4,13 @@
 		"outDir": "bin",
 		"rootDir": "src",
 		"module": "commonjs",
-
 		"strict": true,
 		"sourceMap": true,
 		"declaration": true,
 		"skipLibCheck": true,
 		"removeComments": true,
-		"skipDefaultLibCheck": true
+		"skipDefaultLibCheck": true,
+		"resolveJsonModule": true,
 	},
 	"exclude": [
 		"bin",
