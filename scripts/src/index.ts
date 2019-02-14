@@ -35,15 +35,7 @@ class Web3HelperImpl implements Web3Helper {
     encodeMethod(method: ABIDefinition | string, params: any[]): string {
         // If method is a string - try to fetch its input from the list of known methods.
         if (typeof method === "string") {
-            let methodName = method;
-
-            let signature = web3.utils.sha3(methodName).substring(0, FUNCTION_NAME_LENGTH);
-            method = (<any>functions)[signature] as ABIDefinition;
-            if (!method) {
-                throw new Error(`Could not find known method '${methodName}' from known methods list!`);
-            }
-
-            method.type = "function";
+            method = this.getMethod(method);
         }
 
         return web3.eth.abi.encodeFunctionCall(method, this._encodeNumbericParameters(params));
@@ -68,6 +60,17 @@ class Web3HelperImpl implements Web3Helper {
 
     isAddress(address: any): boolean {
         return web3.utils.isAddress(address);
+    }
+
+    getMethod(methodName: string): ABIDefinition {
+        const signature = web3.utils.sha3(methodName).substring(0, FUNCTION_NAME_LENGTH);
+        const method = (<any>functions)[signature] as ABIDefinition;
+        if (!method) {
+            throw new Error(`Could not find known method '${methodName}' from known methods list!`);
+        }
+
+        method.type = "function";
+        return method;
     }
 
     encodeParameters(inputAbi: string[], params: any[]): string {

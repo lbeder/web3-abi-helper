@@ -178,4 +178,63 @@ describe('Web3Helper', () => {
       });
     });
   });
+
+  describe('getMethod', () => {
+    [
+      {
+        name: 'approve(address,uint256)',
+        method: {
+          inputs: [
+            {
+              name: 'spender',
+              type: 'address',
+            },
+            {
+              name: 'value',
+              type: 'uint256',
+            },
+          ],
+          name: 'approve(address,uint256)',
+          type: 'function',
+        },
+      },
+      {
+        name: 'grant(address,uint256,uint256,uint256,uint256,bool)',
+        method: {
+          inputs: [
+            {
+              name: 'to',
+              type: 'address',
+            },
+            {
+              name: 'value',
+              type: 'uint256',
+            },
+            {
+              name: 'start',
+              type: 'uint256',
+            },
+            {
+              name: 'cliff',
+              type: 'uint256',
+            },
+            {
+              name: 'end',
+              type: 'uint256',
+            },
+            {
+              name: 'revokable',
+              type: 'bool',
+            },
+          ],
+          name: 'grant(address,uint256,uint256,uint256,uint256,bool)',
+          type: 'function',
+        },
+      },
+    ].forEach((spec) => {
+      it(`should return method definition for ${spec.name}`, () => {
+        expect(web3Helper.getMethod(spec.name)).to.eql(spec.method);
+      });
+    });
+  });
 });
