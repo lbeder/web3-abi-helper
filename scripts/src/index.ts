@@ -1,5 +1,6 @@
 import * as functions from "./functions.json";
-const Web3 = require("web3");
+import { AbiCoder } from 'web3-eth-abi';
+import * as Utils from 'web3-utils';
 
 type ABIDataTypes = "uint256" | "boolean" | "string" | "bytes" | string;
 interface ABIDefinition {
@@ -14,7 +15,8 @@ interface ABIDefinition {
 }
 
 const FUNCTION_NAME_LENGTH = 10;
-const web3 = new Web3("http://");
+
+const coder = new AbiCoder();
 
 export interface Web3Helper {
     paramsToString(method: ABIDefinition, params: any[]): string;
@@ -38,7 +40,7 @@ class Web3HelperImpl implements Web3Helper {
             method = this.getMethod(method);
         }
 
-        return web3.eth.abi.encodeFunctionCall(method, this._encodeNumbericParameters(params));
+        return coder.encodeFunctionCall(method, this._encodeNumbericParameters(params));
     }
 
     decodeMethod(data: string): { method: ABIDefinition; params: { [key: string]: any }; } {
@@ -54,16 +56,16 @@ class Web3HelperImpl implements Web3Helper {
 
         return {
             method: abi,
-            params: web3.eth.abi.decodeParameters(abi.inputs, encodedParams)
+            params: coder.decodeParameters(abi.inputs as Array<string | {}>, encodedParams)
         };
     }
 
     isAddress(address: any): boolean {
-        return web3.utils.isAddress(address);
+        return Utils.isAddress(address);
     }
 
     getMethod(methodName: string): ABIDefinition {
-        const signature = web3.utils.sha3(methodName).substring(0, FUNCTION_NAME_LENGTH);
+        const signature = Utils.sha3(methodName).substring(0, FUNCTION_NAME_LENGTH);
         const method = (<any>functions)[signature] as ABIDefinition;
         if (!method) {
             throw new Error(`Could not find known method '${methodName}' from known methods list!`);
@@ -74,12 +76,12 @@ class Web3HelperImpl implements Web3Helper {
     }
 
     encodeParameters(inputAbi: string[], params: any[]): string {
-        return web3.eth.abi.encodeParameters(inputAbi, this._encodeNumbericParameters(params)).replace("0x", "");
+        return coder.encodeParameters(inputAbi, this._encodeNumbericParameters(params)).replace("0x", "");
     }
 
     // Convert numeric parameters to hex strings, due to https://github.com/ethereum/web3.js/issues/2077:
     _encodeNumbericParameters(params: any[]): any[] {
-        return params.map((p: any) => Number.isFinite(p) ? web3.utils.numberToHex(p) : p);
+        return params.map((p: any) => Number.isFinite(p) ? Utils.numberToHex(p) : p);
     }
 }
 
