@@ -1,6 +1,6 @@
 import * as functions from "./functions.json";
-import { AbiCoder } from 'web3-eth-abi';
-import * as Utils from 'web3-utils';
+import { AbiCoder } from "web3-eth-abi";
+import * as Utils from "web3-utils";
 
 type ABIDataTypes = "uint256" | "boolean" | "string" | "bytes" | string;
 interface ABIDefinition {
@@ -15,8 +15,6 @@ interface ABIDefinition {
 }
 
 const FUNCTION_NAME_LENGTH = 10;
-
-const coder = new AbiCoder();
 
 export interface Web3Helper {
     paramsToString(method: ABIDefinition, params: any[]): string;
@@ -40,6 +38,7 @@ class Web3HelperImpl implements Web3Helper {
             method = this.getMethod(method);
         }
 
+        const coder = new AbiCoder();
         return coder.encodeFunctionCall(method, this._encodeNumbericParameters(params));
     }
 
@@ -54,6 +53,7 @@ class Web3HelperImpl implements Web3Helper {
 
         abi.type = "function";
 
+        const coder = new AbiCoder();
         return {
             method: abi,
             params: coder.decodeParameters(abi.inputs as Array<string | {}>, encodedParams)
@@ -76,6 +76,7 @@ class Web3HelperImpl implements Web3Helper {
     }
 
     encodeParameters(inputAbi: string[], params: any[]): string {
+        const coder = new AbiCoder();
         return coder.encodeParameters(inputAbi, this._encodeNumbericParameters(params)).replace("0x", "");
     }
 
