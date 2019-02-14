@@ -1,6 +1,6 @@
 {
   "name": "web3-api-helper",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Ethereum JavaScript API Helper",
   "author": "leonid.beder@gmail.com",
   "license": "MIT",
@@ -17,7 +17,7 @@
   "dependencies": {
     "@types/node": "^10.12.21",
     "typescript": "^3.3.1",
-    "web3": "^1.0.0-beta.43"
+    "web3": "^1.0.0-beta.46"
   },
   "devDependencies": {
     "bignumber.js": "^8.0.2",
