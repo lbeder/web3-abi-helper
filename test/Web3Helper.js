@@ -1,10 +1,24 @@
 const chai = require('chai');
+const Utils = require('web3-utils');
+const web3Helper = require('../scripts/bin/index').Web3Helper;
+const functions = require('../scripts/bin/functions.json');
 
 const { expect } = chai;
 
-const web3Helper = require('../scripts/bin/index').Web3Helper;
+const FUNCTION_NAME_LENGTH = 10;
 
 describe('Web3Helper', () => {
+  describe('encodeMethod', () => {
+    Object.entries(functions).forEach((entry) => {
+      const [signature, method] = entry;
+
+      it(`${method.name} should have the signature ${signature}`, () => {
+        const derivedSignature = Utils.sha3(method.name).substring(0, FUNCTION_NAME_LENGTH);
+        expect(derivedSignature).to.eql(signature);
+      });
+    });
+  });
+
   describe('encodeMethod', () => {
     [
       {
