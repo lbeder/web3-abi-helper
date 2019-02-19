@@ -4,6 +4,8 @@ node_js:
   - 10
 cache:
   yarn: true
+before_install:
+  - yarn global install -g typescript@3.3
 install:
   - yarn install
 script:
