@@ -1,6 +1,6 @@
-import * as functions from "./functions.json";
 import { AbiCoder } from "web3-eth-abi";
 import * as Utils from "web3-utils";
+import * as functions from "./functions.json";
 
 type ABIDataTypes = "uint256" | "boolean" | "string" | "bytes" | string;
 interface ABIDefinition {
