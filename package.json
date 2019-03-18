@@ -1,6 +1,6 @@
 {
   "name": "web3-api-helper",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "Ethereum JavaScript API Helper",
   "author": "leonid.beder@gmail.com",
   "license": "MIT",
@@ -15,19 +15,19 @@
     "test": "./node_modules/.bin/mocha"
   },
   "dependencies": {
-    "web3-eth-abi": "^1.0.0-beta.46",
-    "web3-utils": "^1.0.0-beta.46"
+    "web3-eth-abi": "^1.1.0",
+    "web3-utils": "^1.0.0-beta.48"
   },
   "devDependencies": {
-    "@types/node": "^11.9.4",
-    "bignumber.js": "^8.0.2",
+    "@types/node": "^11.11.3",
+    "bignumber.js": "^8.1.1",
     "chai": "^4.2.0",
-    "eslint": "^5.13.0",
+    "eslint": "^5.15.2",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
-    "mocha": "^5.2.0",
-    "typescript": "^3.3.3"
+    "mocha": "^6.0.2",
+    "typescript": "^3.3.3333"
   }
 }
