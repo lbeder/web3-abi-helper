@@ -29,6 +29,15 @@
     "inputs": [],
     "name": "totalSupply()"
   },
+  "0x20ea8d86": {
+    "inputs": [
+      {
+        "name": "transactionId",
+        "type": "uint256"
+      }
+    ],
+    "name": "revokeConfirmation(uint256)"
+  },
   "0x23b872dd": {
     "inputs": [
       {
@@ -217,6 +226,32 @@
     ],
     "name": "changeRequirement(uint256)"
   },
+  "0xc01a8c84": {
+    "inputs": [
+      {
+        "name": "transactionId",
+        "type": "uint256"
+      }
+    ],
+    "name": "confirmTransaction(uint256)"
+  },
+  "0xc6427474": {
+    "inputs": [
+      {
+        "name": "destination",
+        "type": "address"
+      },
+      {
+        "name": "value",
+        "type": "uint256"
+      },
+      {
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "submitTransaction(address,uint256,bytes)"
+  },
   "0xdc39d06d": {
     "inputs": [
       {
@@ -255,6 +290,15 @@
       }
     ],
     "name": "replaceOwner(address,address)"
+  },
+  "0xee22610b": {
+    "inputs": [
+      {
+        "name": "transactionId",
+        "type": "uint256"
+      }
+    ],
+    "name": "executeTransaction(uint256)"
   },
   "0xf2fde38b": {
     "inputs": [
