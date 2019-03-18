@@ -45,7 +45,6 @@ class Web3HelperImpl implements Web3Helper {
 
     decodeMethod(data: string): { method: ABIDefinition; params: { [key: string]: any }; } {
         const signature = `0x${data.substring(PREFIX_LENGTH, PREFIX_LENGTH + FUNCTION_NAME_LENGTH)}`;
-        const encodedParams = `0x${data.substring(PREFIX_LENGTH + FUNCTION_NAME_LENGTH)}`;
 
         let abi = (<any>functions)[signature] as ABIDefinition;
         if (!abi) {
@@ -55,9 +54,16 @@ class Web3HelperImpl implements Web3Helper {
         abi.type = "function";
 
         const coder = new AbiCoder();
+        const inputs = abi.inputs as Array<string | {}>;
+        let decodedParams: { [key: string]: any } = [];
+        if (inputs.length > 0) {
+            const encodedParams = `0x${data.substring(PREFIX_LENGTH + FUNCTION_NAME_LENGTH)}`;
+            decodedParams = coder.decodeParameters(inputs, encodedParams);
+        }
+
         return {
             method: abi,
-            params: coder.decodeParameters(abi.inputs as Array<string | {}>, encodedParams)
+            params: decodedParams
         };
     }
 
