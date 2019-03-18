@@ -14,7 +14,8 @@ interface ABIDefinition {
     type: "function" | "constructor" | "event" | "fallback";
 }
 
-const FUNCTION_NAME_LENGTH = 10;
+const PREFIX_LENGTH = 2;
+const FUNCTION_NAME_LENGTH = 8;
 
 export interface Web3Helper {
     paramsToString(method: ABIDefinition, params: any[]): string;
@@ -43,8 +44,7 @@ class Web3HelperImpl implements Web3Helper {
     }
 
     decodeMethod(data: string): { method: ABIDefinition; params: { [key: string]: any }; } {
-        const signature = data.substring(0, FUNCTION_NAME_LENGTH);
-        const encodedParams = data.substring(FUNCTION_NAME_LENGTH);
+        const signature = `0x${data.substring(PREFIX_LENGTH, PREFIX_LENGTH + FUNCTION_NAME_LENGTH)}`;
 
         let abi = (<any>functions)[signature] as ABIDefinition;
         if (!abi) {
@@ -54,9 +54,16 @@ class Web3HelperImpl implements Web3Helper {
         abi.type = "function";
 
         const coder = new AbiCoder();
+        const inputs = abi.inputs as Array<string | {}>;
+        let decodedParams: { [key: string]: any } = [];
+        if (inputs.length > 0) {
+            const encodedParams = `0x${data.substring(PREFIX_LENGTH + FUNCTION_NAME_LENGTH)}`;
+            decodedParams = coder.decodeParameters(inputs, encodedParams);
+        }
+
         return {
             method: abi,
-            params: coder.decodeParameters(abi.inputs as Array<string | {}>, encodedParams)
+            params: decodedParams
         };
     }
 
@@ -65,7 +72,7 @@ class Web3HelperImpl implements Web3Helper {
     }
 
     getMethod(methodName: string): ABIDefinition {
-        const signature = Utils.sha3(methodName).substring(0, FUNCTION_NAME_LENGTH);
+        const signature = Utils.sha3(methodName).substring(0, PREFIX_LENGTH + FUNCTION_NAME_LENGTH);
         const method = (<any>functions)[signature] as ABIDefinition;
         if (!method) {
             throw new Error(`Could not find known method '${methodName}' from known methods list!`);
