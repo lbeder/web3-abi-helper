@@ -22,6 +22,8 @@ export interface Web3Helper {
     encodeMethod(method: ABIDefinition | string, params: any[]): string;
     decodeMethod(data: string): { method: ABIDefinition; params: { [key: string]: any } };
     isAddress(address: any): boolean;
+    getMethod(methodName: string): ABIDefinition;
+    getMethodNames(): string[];
     encodeParameters(inputAbi: string[], params: any[]): string;
 }
 
@@ -80,6 +82,12 @@ class Web3HelperImpl implements Web3Helper {
 
         method.type = "function";
         return method;
+    }
+
+    getMethodNames(): string[] {
+        return (Object.entries(functions) as [string, ABIDefinition][]).map((method: [string, ABIDefinition]) => {
+            return method[1].name || '';
+        });
     }
 
     encodeParameters(inputAbi: string[], params: any[]): string {

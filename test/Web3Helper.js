@@ -251,4 +251,14 @@ describe('Web3Helper', () => {
       });
     });
   });
+
+  describe('getMethodNames', () => {
+    Object.entries(functions).forEach((entry) => {
+      const [, method] = entry;
+
+      it(`should include ${method.name}`, () => {
+        expect(web3Helper.getMethodNames()).to.include(method.name);
+      });
+    });
+  });
 });
