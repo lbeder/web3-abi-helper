@@ -25,6 +25,15 @@
     ],
     "name": "removeOwner(address)"
   },
+  "0x17ffc320": {
+    "inputs": [
+      {
+        "name": "token",
+        "type": "address"
+      }
+    ],
+    "name": "reclaimToken(address)"
+  },
   "0x18160ddd": {
     "inputs": [],
     "name": "totalSupply()"

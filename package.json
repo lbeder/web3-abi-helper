@@ -1,6 +1,6 @@
 {
   "name": "web3-api-helper",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "description": "Ethereum JavaScript API Helper",
   "author": "leonid.beder@gmail.com",
   "license": "MIT",
@@ -11,8 +11,8 @@
   "main": "./scripts/bin/index.js",
   "types": "./scripts/bin/index.d.ts",
   "scripts": {
-    "build": "tsc --build scripts/tsconfig.json",
-    "test": "./node_modules/.bin/mocha"
+    "build": "rm -rf scripts/bin && tsc --build scripts/tsconfig.json",
+    "test": "yarn build && ./node_modules/.bin/mocha"
   },
   "dependencies": {
     "web3-eth-abi": "^1.0.0-beta.48",
