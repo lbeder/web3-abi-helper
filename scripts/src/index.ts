@@ -1,4 +1,4 @@
-import { AbiCoder } from "web3-eth-abi";
+import { encodeFunctionCall, encodeParameters, decodeParameters } from "web3-eth-abi";
 import * as Utils from "web3-utils";
 import * as functions from "./functions.json";
 
@@ -41,8 +41,7 @@ class Web3HelperImpl implements Web3Helper {
             method = this.getMethod(method);
         }
 
-        const coder = new AbiCoder();
-        return coder.encodeFunctionCall(method, this._encodeNumbericParameters(params));
+        return encodeFunctionCall(method, this._encodeNumbericParameters(params));
     }
 
     decodeMethod(data: string): { method: ABIDefinition; params: { [key: string]: any }; } {
@@ -55,12 +54,11 @@ class Web3HelperImpl implements Web3Helper {
 
         abi.type = "function";
 
-        const coder = new AbiCoder();
         const inputs = abi.inputs as Array<string | {}>;
         let decodedParams: { [key: string]: any } = [];
         if (inputs.length > 0) {
             const encodedParams = `0x${data.substring(PREFIX_LENGTH + FUNCTION_NAME_LENGTH)}`;
-            decodedParams = coder.decodeParameters(inputs, encodedParams);
+            decodedParams = decodeParameters(inputs, encodedParams);
         }
 
         return {
@@ -91,8 +89,7 @@ class Web3HelperImpl implements Web3Helper {
     }
 
     encodeParameters(inputAbi: string[], params: any[]): string {
-        const coder = new AbiCoder();
-        return coder.encodeParameters(inputAbi, this._encodeNumbericParameters(params)).replace("0x", "");
+        return encodeParameters(inputAbi, this._encodeNumbericParameters(params)).replace("0x", "");
     }
 
     // Convert numeric parameters to hex strings, due to https://github.com/ethereum/web3.js/issues/2077:
