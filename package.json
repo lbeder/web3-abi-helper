@@ -1,12 +1,12 @@
 {
-  "name": "web3-api-helper",
+  "name": "web3-abi-helper",
   "version": "3.6.0",
-  "description": "Ethereum JavaScript API Helper",
+  "description": "Ethereum JavaScript ABI Helper",
   "author": "leonid.beder@gmail.com",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lbeder/web3-api-helper.git"
+    "url": "git+https://github.com/lbeder/web3-abi-helper.git"
   },
   "main": "./scripts/bin/index.js",
   "types": "./scripts/bin/index.d.ts",
