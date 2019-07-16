@@ -1,12 +1,12 @@
 {
-  "name": "web3-api-helper",
-  "version": "3.6.0",
-  "description": "Ethereum JavaScript API Helper",
+  "name": "web3-abi-helper",
+  "version": "3.7.0",
+  "description": "Ethereum JavaScript ABI Helper",
   "author": "leonid.beder@gmail.com",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lbeder/web3-api-helper.git"
+    "url": "git+https://github.com/lbeder/web3-abi-helper.git"
   },
   "main": "./scripts/bin/index.js",
   "types": "./scripts/bin/index.d.ts",
@@ -15,19 +15,19 @@
     "test": "yarn build && ./node_modules/.bin/mocha"
   },
   "dependencies": {
-    "web3-eth-abi": "^1.0.0-beta.48",
-    "web3-utils": "^1.0.0-beta.48"
+    "web3-eth-abi": "^1.0.0",
+    "web3-utils": "^1.0.0"
   },
   "devDependencies": {
-    "@types/node": "^11.11.3",
-    "bignumber.js": "^8.1.1",
+    "@types/node": "^12.6.3",
+    "bignumber.js": "^9.0.0",
     "chai": "^4.2.0",
-    "eslint": "^5.15.2",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.12.4",
-    "mocha": "^6.0.2",
-    "typescript": "^3.3.3333"
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.2",
+    "mocha": "^6.1.4",
+    "typescript": "^3.5.3"
   }
 }
