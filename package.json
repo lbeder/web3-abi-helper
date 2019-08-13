@@ -15,19 +15,19 @@
     "test": "yarn build && ./node_modules/.bin/mocha"
   },
   "dependencies": {
-    "web3-eth-abi": "^1.0.0",
-    "web3-utils": "^1.0.0"
+    "web3-eth-abi": "^1.2.1",
+    "web3-utils": "^1.2.1"
   },
   "devDependencies": {
-    "@types/node": "^12.6.3",
+    "@types/node": "^12.7.1",
     "bignumber.js": "^9.0.0",
     "chai": "^4.2.0",
-    "eslint": "^6.0.1",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-plugin-import": "^2.18.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.2",
-    "mocha": "^6.1.4",
+    "eslint-plugin-react": "^7.14.3",
+    "mocha": "^6.2.0",
     "typescript": "^3.5.3"
   }
 }
