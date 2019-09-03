@@ -1,4 +1,4 @@
-# Web3 API Helper
+# Web3 ABI Helper
 
 [![Build Status](https://travis-ci.org/lbeder/web3-abi-helper.svg)](https://travis-ci.org/lbeder/web3-abi-helper)
 

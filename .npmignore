@@ -1,4 +1,3 @@
-.idea
-scripts/src
-scripts/tsconfig.json
+src
+tsconfig.json
 npm-debug.log
