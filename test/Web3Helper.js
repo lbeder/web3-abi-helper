@@ -1,7 +1,7 @@
 const chai = require('chai');
 const Utils = require('web3-utils');
-const web3Helper = require('../scripts/bin/index').Web3Helper;
-const functions = require('../scripts/bin/functions.json');
+const web3Helper = require('../dist/index').Web3Helper;
+const functions = require('../dist/functions.json');
 
 const { expect } = chai;
 

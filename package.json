@@ -8,10 +8,10 @@
     "type": "git",
     "url": "git+https://github.com/lbeder/web3-abi-helper.git"
   },
-  "main": "./scripts/bin/index.js",
-  "types": "./scripts/bin/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "rm -rf scripts/bin && tsc --build scripts/tsconfig.json",
+    "build": "rm -rf dist && tsc --build tsconfig.json",
     "test": "yarn build && ./node_modules/.bin/mocha"
   },
   "dependencies": {
