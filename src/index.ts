@@ -76,7 +76,7 @@ class Web3HelperImpl implements IWeb3Helper {
 
     public getMethod(methodName: string): IABIDefinition {
         const signature = Utils.sha3(methodName).substring(0, PREFIX_LENGTH + FUNCTION_NAME_LENGTH);
-        const method = (functions as any)[signature] as IABIDefinition;
+        const method = (functions as IABIFunctionDefinitions)[signature] as IABIDefinition;
         if (!method) {
             throw new Error(`Could not find known method '${methodName}' from known methods list!`);
         }
