@@ -13,6 +13,7 @@
   "scripts": {
     "build": "rm -rf dist && tsc --build tsconfig.json",
     "test": "yarn build && ./node_modules/.bin/mocha"
+    "lint": "./node_modules/.bin/tslint -c tslint.json src/**/*.ts test/**/*.ts"
   },
   "dependencies": {
     "web3-eth-abi": "^1.2.1",
