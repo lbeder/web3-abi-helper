@@ -9,9 +9,12 @@ export interface IABIDefinition {
     stateMutability?: "pure" | "view" | "nonpayable" | "payable";
     anonymous?: boolean;
     inputs?: Array<{ name: string; type: ABIDataTypes; indexed?: boolean }>;
-    name?: string;
+    name: string;
     outputs?: Array<{ name: string; type: ABIDataTypes }>;
-    type: "function" | "constructor" | "event" | "fallback";
+    type?: "function" | "constructor" | "event" | "fallback";
+}
+export interface IABIFunctionDefinitions {
+    [key: string]: IABIDefinition;
 }
 
 const PREFIX_LENGTH = 2;
@@ -47,7 +50,7 @@ class Web3HelperImpl implements IWeb3Helper {
     public decodeMethod(data: string): { method: IABIDefinition; params: { [key: string]: any }; } {
         const signature = `0x${data.substring(PREFIX_LENGTH, PREFIX_LENGTH + FUNCTION_NAME_LENGTH)}`;
 
-        const abi = (functions as any)[signature] as IABIDefinition;
+        const abi = (functions as IABIFunctionDefinitions)[signature] as IABIDefinition;
         if (!abi) {
             throw new Error(`Could not find function for signature: ${signature}!`);
         }

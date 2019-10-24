@@ -7,7 +7,7 @@ const FUNCTION_NAME_LENGTH = 10;
 
 describe("Web3Helper", () => {
   describe("encodeMethod", () => {
-    Object.entries(functions).forEach((entry: any) => {
+    Object.entries(functions).forEach((entry: [string, IABIDefinition]) => {
       const [signature, method] = entry;
 
       it(`${method.name} should have the signature ${signature}`, () => {
@@ -255,8 +255,8 @@ describe("Web3Helper", () => {
   });
 
   describe("getMethodNames", () => {
-    Object.entries(functions).forEach((entry) => {
-      const [, method] = entry as any;
+    Object.entries(functions).forEach((entry: [string, IABIDefinition]) => {
+      const [, method] = entry;
 
       it(`should include ${method.name}`, () => {
         expect(Web3Helper.getMethodNames()).to.include(method.name);
