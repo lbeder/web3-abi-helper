@@ -1,6 +1,10 @@
 {
 	"compilerOptions": {
-		"target": "ES6",
+		"module": "commonjs",
+		"lib": [
+			"es6"
+		],
+		"target": "es6",
 		"outDir": "dist",
 		"rootDir": "src",
 		"baseUrl": ".",
@@ -8,17 +12,21 @@
 			"*": [
 				"node_modules/*",
 				"src/types/*"
-			]
+			],
+			"web3-eth-abi": [
+				"src/types/web3-eth-abi.d.ts"
+			],
 		},
-		"module": "commonjs",
 		"strict": true,
 		"sourceMap": true,
 		"declaration": true,
-		"skipLibCheck": true,
 		"removeComments": true,
 		"skipDefaultLibCheck": true,
 		"resolveJsonModule": true,
 	},
+	"include": [
+		"./src/**/*"
+	],
 	"exclude": [
 		"dist",
 		"node_modules"
