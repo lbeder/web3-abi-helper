@@ -16,8 +16,6 @@
     "lint": "./node_modules/.bin/tslint -c tslint.json src/**/*.ts test/**/*.ts"
   },
   "dependencies": {
-    "global": "^4.4.0",
-    "npm-check-updates": "^3.1.25",
     "web3-eth-abi": "^1.2.2",
     "web3-utils": "^1.2.2"
   },
