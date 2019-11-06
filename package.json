@@ -1,6 +1,6 @@
 {
   "name": "web3-abi-helper",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Ethereum JavaScript ABI Helper",
   "author": "leonid.beder@gmail.com",
   "license": "MIT",
@@ -16,8 +16,6 @@
     "lint": "./node_modules/.bin/tslint -c tslint.json src/**/*.ts test/**/*.ts"
   },
   "dependencies": {
-    "global": "^4.4.0",
-    "npm-check-updates": "^3.1.25",
     "web3-eth-abi": "^1.2.2",
     "web3-utils": "^1.2.2"
   },
@@ -25,17 +23,17 @@
     "@types/bn.js": "^4.11.5",
     "@types/chai": "^4.2.4",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.11.7",
+    "@types/node": "^12.12.6",
     "bignumber.js": "^9.0.0",
     "chai": "^4.2.0",
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "mocha": "^6.2.2",
     "ts-node": "^8.4.1",
-    "tslint": "^5.20.0",
-    "typescript": "^3.6.4"
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2"
   }
 }
