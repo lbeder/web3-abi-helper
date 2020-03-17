@@ -8,9 +8,9 @@ export interface IABIDefinition {
     payable?: boolean;
     stateMutability?: "pure" | "view" | "nonpayable" | "payable";
     anonymous?: boolean;
-    inputs?: Array<{ name: string; type: ABIDataTypes; indexed?: boolean }>;
+    inputs?: { name: string; type: ABIDataTypes; indexed?: boolean }[];
     name: string;
-    outputs?: Array<{ name: string; type: ABIDataTypes }>;
+    outputs?: { name: string; type: ABIDataTypes }[];
     type?: "function" | "constructor" | "event" | "fallback";
 }
 export interface IABIFunctionDefinitions {
@@ -52,12 +52,12 @@ class Web3HelperImpl implements IWeb3Helper {
 
         const abi = (functions as IABIFunctionDefinitions)[signature] as IABIDefinition;
         if (!abi) {
-            throw new Error(`Could not find function for signature: ${signature}!`);
+            throw new Error(`Could not find function for signature: ${signature}`);
         }
 
         abi.type = "function";
 
-        const inputs = abi.inputs as Array<string | {}>;
+        const inputs = abi.inputs as string[] | {}[];
         let decodedParams: { [key: string]: any } = [];
         if (inputs.length > 0) {
             const encodedParams = `0x${data.substring(PREFIX_LENGTH + FUNCTION_NAME_LENGTH)}`;
@@ -75,10 +75,14 @@ class Web3HelperImpl implements IWeb3Helper {
     }
 
     public getMethod(methodName: string): IABIDefinition {
-        const signature = Utils.sha3(methodName).substring(0, PREFIX_LENGTH + FUNCTION_NAME_LENGTH);
+        const sha3 = Utils.sha3(methodName);
+        if (!sha3) {
+            throw new Error(`Invalid method name '${methodName}'`);
+        }
+        const signature = sha3.substring(0, PREFIX_LENGTH + FUNCTION_NAME_LENGTH);
         const method = (functions as IABIFunctionDefinitions)[signature] as IABIDefinition;
         if (!method) {
-            throw new Error(`Could not find known method '${methodName}' from known methods list!`);
+            throw new Error(`Could not find known method '${methodName}' from known methods list`);
         }
 
         method.type = "function";
@@ -87,7 +91,7 @@ class Web3HelperImpl implements IWeb3Helper {
 
     public getMethodNames(): string[] {
         // tslint:disable-next-line max-line-length
-        return (Object.entries(functions) as Array<[string, IABIDefinition]>).map((method: [string, IABIDefinition]) => {
+        return (Object.entries(functions) as [string, IABIDefinition][]).map((method: [string, IABIDefinition]) => {
             return method[1].name || "";
         });
     }
