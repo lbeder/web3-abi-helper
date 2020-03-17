@@ -8,9 +8,9 @@ export interface IABIDefinition {
     payable?: boolean;
     stateMutability?: "pure" | "view" | "nonpayable" | "payable";
     anonymous?: boolean;
-    inputs?: Array<{ name: string; type: ABIDataTypes; indexed?: boolean }>;
+    inputs?: { name: string; type: ABIDataTypes; indexed?: boolean }[];
     name: string;
-    outputs?: Array<{ name: string; type: ABIDataTypes }>;
+    outputs?: { name: string; type: ABIDataTypes }[];
     type?: "function" | "constructor" | "event" | "fallback";
 }
 export interface IABIFunctionDefinitions {
@@ -57,7 +57,7 @@ class Web3HelperImpl implements IWeb3Helper {
 
         abi.type = "function";
 
-        const inputs = abi.inputs as Array<string | {}>;
+        const inputs = abi.inputs as string[] | {}[];
         let decodedParams: { [key: string]: any } = [];
         if (inputs.length > 0) {
             const encodedParams = `0x${data.substring(PREFIX_LENGTH + FUNCTION_NAME_LENGTH)}`;
@@ -91,7 +91,7 @@ class Web3HelperImpl implements IWeb3Helper {
 
     public getMethodNames(): string[] {
         // tslint:disable-next-line max-line-length
-        return (Object.entries(functions) as Array<[string, IABIDefinition]>).map((method: [string, IABIDefinition]) => {
+        return (Object.entries(functions) as [string, IABIDefinition][]).map((method: [string, IABIDefinition]) => {
             return method[1].name || "";
         });
     }
