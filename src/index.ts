@@ -52,7 +52,7 @@ class Web3HelperImpl implements IWeb3Helper {
 
         const abi = (functions as IABIFunctionDefinitions)[signature] as IABIDefinition;
         if (!abi) {
-            throw new Error(`Could not find function for signature: ${signature}!`);
+            throw new Error(`Could not find function for signature: ${signature}`);
         }
 
         abi.type = "function";
@@ -75,10 +75,14 @@ class Web3HelperImpl implements IWeb3Helper {
     }
 
     public getMethod(methodName: string): IABIDefinition {
-        const signature = Utils.sha3(methodName).substring(0, PREFIX_LENGTH + FUNCTION_NAME_LENGTH);
+        const sha3 = Utils.sha3(methodName);
+        if (!sha3) {
+            throw new Error(`Invalid method name '${methodName}'`);
+        }
+        const signature = sha3.substring(0, PREFIX_LENGTH + FUNCTION_NAME_LENGTH);
         const method = (functions as IABIFunctionDefinitions)[signature] as IABIDefinition;
         if (!method) {
-            throw new Error(`Could not find known method '${methodName}' from known methods list!`);
+            throw new Error(`Could not find known method '${methodName}' from known methods list`);
         }
 
         method.type = "function";
