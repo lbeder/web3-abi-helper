@@ -11,7 +11,7 @@ describe("Web3Helper", () => {
       const [signature, method] = entry;
 
       it(`${method.name} should have the signature ${signature}`, () => {
-        const derivedSignature = Utils.sha3(method.name).substring(0, FUNCTION_NAME_LENGTH);
+        const derivedSignature = Utils.sha3(method.name)?.substring(0, FUNCTION_NAME_LENGTH);
         expect(derivedSignature).to.eql(signature);
       });
     });
