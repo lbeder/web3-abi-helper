@@ -317,5 +317,110 @@
       }
     ],
     "name": "transferOwnership(address)"
+  },
+  "0x025cf89f": {
+    "inputs": [
+      {
+        "name": "newMigrationManager",
+        "type": "address"
+      }
+    ],
+    "name": "setMigrationManager(address)"
+  },
+  "0xd0532d91": {
+     "inputs": [
+      {
+        "name": "newEmergencyManager",
+        "type": "address"
+      }
+    ],
+    "name": "setEmergencyManager(address)"
+  },
+  "0xcced4f20": {
+    "inputs": [
+      {
+        "name": "newNotifier",
+        "type": "address"
+      }
+    ],
+    "name": "setStakeChangeNotifier(address)"
+  },
+  "0xbb82dd17": {
+    "inputs": [
+      {
+        "name": "newStakingContract",
+        "type": "address"
+      }
+    ],
+    "name": "addMigrationDestination(address)"
+  },
+  "0x96690c9e": {
+    "inputs": [],
+    "name": "releaseAllStakes()"
+  },
+  "0x8cfc430e": {
+    "inputs": [
+      {
+        "name": "stakingContract",
+        "type": "address"
+      }
+    ],
+    "name": "removeMigrationDestination(address)"
+  },
+  "0x2e17de78": {
+    "inputs": [
+      {
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "unstake(uint256)"
+  },
+  "0xa53acf61": {
+    "inputs": [
+      {
+        "name": "stakeOwner",
+        "type": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "acceptMigration(address,uint256)"
+  },
+  "0xdf3f2f8a": {
+    "inputs": [
+      {
+        "name": "newStakingContract",
+        "type": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "migrateStakedTokens(address,uint256)"
+  },
+  "0x4f91440d": {
+    "inputs": [],
+    "name": "restake()"
+  },
+  "0xa694fc3a": {
+    "inputs": [
+			{
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+    "name": "stake(uint256)"
+  },
+  "0x826cc8fc": {
+    "inputs": [],
+    "name": "stopAcceptingNewStakes()"
+  },
+  "0x3ccfd60b": {
+    "inputs": [],
+    "name": "withdraw()"
   }
 }
