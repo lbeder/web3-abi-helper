@@ -16,14 +16,14 @@
     "lint": "./node_modules/.bin/tslint -c tslint.json src/**/*.ts test/**/*.ts"
   },
   "dependencies": {
-    "web3-eth-abi": "^1.5.1",
-    "web3-utils": "^1.5.1"
+    "web3-eth-abi": "^1.5.2",
+    "web3-utils": "^1.5.2"
   },
   "devDependencies": {
     "@types/bn.js": "^5.1.0",
     "@types/chai": "^4.2.21",
     "@types/mocha": "^9.0.0",
-    "@types/node": "^16.4.13",
+    "@types/node": "^16.6.1",
     "bignumber.js": "^9.0.1",
     "chai": "^4.3.4",
     "eslint": "^7.32.0",
